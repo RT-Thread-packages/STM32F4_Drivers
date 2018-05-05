@@ -1,5 +1,3 @@
-Import('RTT_ROOT')
-Import('rtconfig')
 from building import *
 
 cwd = GetCurrentDir()
@@ -37,7 +35,7 @@ if GetDepend(['RT_USING_USB_HOST']):
 if GetDepend(['RT_USING_I2C']):
     src += ['drv_i2c.c']
 
-CPPPATH = ['../inc']
+CPPPATH = [cwd + '/../inc']
 
 group = DefineGroup('Drivers', src, depend = [''], CPPPATH = CPPPATH)
 
