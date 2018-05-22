@@ -26,6 +26,7 @@
 #include <rtdevice.h>
 #include <string.h>
 #include <time.h>
+#ifdef RT_USING_RTC
 RTC_HandleTypeDef hrtc;
 /* RTC init function */
 void MX_RTC_Init(void)
@@ -181,3 +182,4 @@ int rt_hw_rtc_init(void)
     return rt_device_register(&rtc_device, "rtc", RT_DEVICE_FLAG_DEACTIVATE);
 }
 INIT_BOARD_EXPORT(rt_hw_rtc_init);
+#endif
