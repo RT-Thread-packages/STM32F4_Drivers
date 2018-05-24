@@ -27,6 +27,7 @@
 #include <rtdevice.h>
 #include "drv_i2c.h"
 #include <board.h>
+#ifdef RT_USING_I2C
 /*user can change this*/
 #define I2C_BUS_NAME  "i2c2"
 /*user should change this to adapt specific board*/
@@ -108,3 +109,4 @@ int drv_i2c_init(void)
 }
 INIT_DEVICE_EXPORT(drv_i2c_init);
 /* end of i2c driver */
+#endif

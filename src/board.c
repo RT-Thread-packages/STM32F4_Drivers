@@ -18,7 +18,7 @@
  * @addtogroup STM32
  */
 /*@{*/
-#ifdef RT_USING_HSI
+#ifdef BSP_USING_HSI
     #error Can not using HSI on this bsp
 #endif
 #if defined(RCC_PERIPHCLK_SDIO) || defined(RCC_PERIPHCLK_CEC) || defined(RCC_PERIPHCLK_LTDC)\
@@ -29,7 +29,7 @@
 static void SystemClock_Config(void)
 {
     rt_uint32_t hse_clk, sys_clk;
-#if (RT_HSE_VALVE % 1000000 != 0)
+#if (BSP_HSE_VALVE % 1000000 != 0)
 #error HSE must be integer of MHz
 #endif
     hse_clk = HSE_VALUE / 1000000UL;
@@ -113,7 +113,7 @@ static void SystemClock_Config(void)
                                   | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-#if (RT_HSE_HCLK <= 42000000UL)
+#if (BSP_HSE_HCLK <= 42000000UL)
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
@@ -121,7 +121,7 @@ static void SystemClock_Config(void)
         while (1)
         {}
     }
-#elif (RT_HSE_HCLK <= 84000000UL)
+#elif (BSP_HSE_HCLK <= 84000000UL)
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
@@ -129,7 +129,7 @@ static void SystemClock_Config(void)
         while (1)
         {}
     }
-#elif (RT_HSE_HCLK <= 168000000UL)
+#elif (BSP_HSE_HCLK <= 168000000UL)
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
