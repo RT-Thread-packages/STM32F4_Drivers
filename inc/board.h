@@ -19,9 +19,9 @@
 #include <rtthread.h>
 
 #ifdef STM32_PIN_NUMBERS
-#define STM32F4XX_PIN_NUMBERS STM32_PIN_NUMBERS
+#define STM32F4xx_PIN_NUMBERS STM32_PIN_NUMBERS
 #else
-#define STM32F4XX_PIN_NUMBERS 64
+#define STM32F4xx_PIN_NUMBERS 64
 #warning Need using this pkgs in stm32-bsp
 #endif
 
